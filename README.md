@@ -8,6 +8,8 @@
 <tr>
 <td width="50%" valign="top">
 
+<a href="https://github.com/NeilGilani/hebb-claude-plugin"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NeilGilani/hebb-claude-plugin/assets/banner-dark.png"><img src="https://raw.githubusercontent.com/NeilGilani/hebb-claude-plugin/assets/banner-light.png" width="100%" alt="Hebb: Claude Code that learns from its own mistakes"></picture></a>
+
 ### [HEBB](https://github.com/NeilGilani/hebb-claude-plugin)
 **AI is trained. HEBB makes it learn.**<br>
 Coding agents repeat the same mistakes every session. HEBB turns a failed command plus its fix into a lesson, then blocks the bad command next time.<br>
@@ -15,6 +17,8 @@ Coding agents repeat the same mistakes every session. HEBB turns a failed comman
 
 </td>
 <td width="50%" valign="top">
+
+<a href="https://github.com/NeilGilani/quant-research/tree/main/006-do-stop-losses-work"><img src="assets/research-006-search.png" width="100%" alt="Note 006: the best stop-loss rule on real data sits inside the null distribution from shuffled data"></a>
 
 ### [Martingale](https://github.com/NeilGilani/quant-research)
 **Trading claims, tested against a null.**<br>
@@ -33,6 +37,8 @@ YOLO11 segmentation, tracking and per-animal baselines flag animals that drift f
 
 </td>
 <td width="50%" valign="top">
+
+<a href="https://github.com/NeilGilani/exchange-simulator"><img src="https://raw.githubusercontent.com/NeilGilani/exchange-simulator/main/docs/credit-crisis.png" width="100%" alt="exchange-simulator: an 18% shock hits leveraged funds; haircuts rise, depth collapses, two funds fail"></a>
 
 ### [The quant stack](https://github.com/NeilGilani/quantsim)
 **Built the engines before trusting a result.**<br>
