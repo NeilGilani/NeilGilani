@@ -1,20 +1,19 @@
-# Regenerates the animated banner, the live strategy tracker (real SPY), the
-# animated order book & Monte Carlo SVGs, and the research digest every morning,
-# then commits them back — so the profile is never static.
+# Keeps the two live blocks in the profile README current:
+#   DIGEST   - the latest finished note and the note in progress in quant-research
+#   ACTIVITY - the most recently pushed public repos and their latest commit
+# Both read real data at run time (the quant-research README and the GitHub API)
+# and leave the README untouched if the fetch fails.
 name: profile
 
 on:
   schedule:
-    - cron: "17 13 * * *" # ~daily; offset off the hour so it isn't queued
+    - cron: "17 13 * * *" # daily, offset off the hour so it isn't queued
   workflow_dispatch: {}
   push:
     branches: [main]
     paths:
-      - assets/gen_banner.py
-      - assets/gen_tracker.py
-      - assets/gen_orderbook.py
-      - assets/gen_montecarlo.py
       - assets/gen_digest.py
+      - assets/gen_activity.py
       - .github/workflows/profile.yml
 
 permissions:
@@ -30,28 +29,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install quantsim
-        run: pip install "git+https://github.com/hilothefunnydog123-coder/quantsim.git"
-
-      - name: Regenerate banner
-        run: python assets/gen_banner.py
-
-      - name: Update strategy tracker (real SPY, falls back to sample)
-        run: python assets/gen_tracker.py
-
-      - name: Regenerate animated order book
-        run: python assets/gen_orderbook.py
-
-      - name: Regenerate Monte Carlo pricing animation
-        run: python assets/gen_montecarlo.py
-
-      - name: Refresh research digest from Neil Quant Labs
+      - name: Refresh research digest
         run: python assets/gen_digest.py
+
+      - name: Refresh recent activity
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python assets/gen_activity.py
 
       - name: Commit if changed
         run: |
-          git config user.name "hilothefunnydog123-coder"
-          git config user.email "229661712+hilothefunnydog123-coder@users.noreply.github.com"
-          git add assets/banner.svg assets/equity.svg assets/orderbook.svg assets/montecarlo.svg README.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
           git diff --cached --quiet || git commit -m "chore: daily profile refresh"
           git push

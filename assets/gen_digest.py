@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Auto research digest for the profile README.
 
-Pulls the live notes table from the Martingale (quant-research) repo,
+Pulls the notes table from the Martingale (quant-research) repo,
 figures out (1) the most recent *completed* research note and its finding, and
 (2) the next *planned* note ("currently researching"), and injects a compact,
 always-current digest into the profile README between the DIGEST markers.
@@ -19,18 +19,18 @@ import urllib.request
 HERE = os.path.dirname(__file__)
 ROOT = os.path.dirname(HERE)
 README = os.path.join(ROOT, "README.md")
-REPO = "https://github.com/hilothefunnydog123-coder/quant-research"
-RAW = "https://raw.githubusercontent.com/hilothefunnydog123-coder/quant-research/main/README.md"
+REPO = "https://github.com/NeilGilani/quant-research"
+RAW = "https://raw.githubusercontent.com/NeilGilani/quant-research/main/README.md"
 
 # Used only if the repo can't be fetched (keeps the profile from ever breaking).
 FALLBACK = {
-    "done_num": "003",
-    "done_q": "Momentum vs. mean reversion across regimes, after costs?",
-    "done_find": ("Over 4,916 days of SPY, neither beats buy-and-hold (Sharpe 0.63) after costs "
-                  "— but each is a regime bet: momentum leads in bull markets, mean reversion "
-                  "earns 1.07 in bear markets, then its ~6× turnover lets 5bp costs turn it negative"),
-    "next_num": "004",
-    "next_q": "How effective are liquidity-grab / FVG setups, statistically?",
+    "done_num": "006",
+    "done_q": "Do stop-losses actually improve risk-adjusted returns?",
+    "done_find": ("Across 5,031 days of the NASDAQ Composite, the edge is the search: the best of "
+                  "30 stop rules beats buy-and-hold by +0.094 Sharpe, and the same search on "
+                  "shuffled bars beats it by +0.095 (p = 0.43)"),
+    "next_num": "007",
+    "next_q": "How much history do you need to tell skill from luck?",
 }
 
 
@@ -92,9 +92,10 @@ def get_digest():
 
 def build_block(d: dict) -> str:
     return f"""<!--DIGEST:START-->
-> 🔬 **Latest from [Martingale]({REPO}):** **Note {d['done_num']} — {d['done_q']}** → *{d['done_find']}.* &nbsp;[**read the paper →**]({REPO})
+> **Latest note · {d['done_num']}** — {d['done_q']}
+> {d['done_find']}. [Read the paper →]({REPO})
 >
-> 🧫 **Currently researching:** Note {d['next_num']} — *{d['next_q']}*
+> **In progress · {d['next_num']}** — {d['next_q']}
 <!--DIGEST:END-->"""
 
 
