@@ -61,7 +61,7 @@ Most trading repos claim to have found an edge. This one checks whether the edge
 
 <!--DIGEST:START-->
 > **Latest note · 006** — Do stop-losses actually improve risk-adjusted returns?
-> Across 5,031 days of the NASDAQ Composite, the edge is the search: the best of 30 stop rules beats buy-and-hold by +0.094 Sharpe, and the same search on shuffled bars beats it by +0.095 (p = 0.43). [Read the paper →](https://github.com/NeilGilani/quant-research)
+> Across 5,031 days of the NASDAQ Composite, the edge is the search: the best of 30 stop rules beats buy-and-hold by +0.094 Sharpe, and the same search on shuffled bars with every trend destroyed beats it by +0.095 (p = 0.43). Picking the winner on history then loses −0.166 forward, and in-sample rank anti-predicts out-of-sample (−0.28). Real findings: 20.6% of stops gap through their price. [Read the paper →](https://github.com/NeilGilani/quant-research)
 >
 > **In progress · 007** — How much history do you need to tell skill from luck?
 <!--DIGEST:END-->
@@ -182,7 +182,7 @@ The five most recently updated public repos and their latest commit, refreshed d
 | `2026-09-28` | [100M](https://github.com/NeilGilani/100M) | Draft on free AI plans for a beta |
 | `2026-09-25` | [quant-research](https://github.com/NeilGilani/quant-research) | Note 006: do stop-losses actually improve risk-adjusted returns? |
 | `2026-08-16` | [Strata](https://github.com/NeilGilani/Strata) | Read a pasted page into contacts, and discard any address it was not given |
-| `2026-08-03` | [medeal](https://github.com/NeilGilani/medeal) | Type the demonstration's sections so the letter actually renders |
+| `2026-08-03` | [exchange-simulator](https://github.com/NeilGilani/exchange-simulator) | Fix README heading: five layers, not four |
 
 <!--ACTIVITY:END-->
 
